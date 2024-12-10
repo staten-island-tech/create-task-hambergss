@@ -42,6 +42,40 @@ function insertText(inputContent, type) { //function insertText is sequencing be
   DOMSelect.settings.style.display = "";
 }
 ```
+### Butter:
+
+``` Javascript
+function retrieveFeelingQuote(category) { //sequencing
+  DOMSelectors.mainOutput.innerHTML = ""; //Gets rid of previous current quote
+  $.ajax({
+    method: "GET",
+    url: "https://api.api-ninjas.com/v1/quotes?category=" + category,
+    headers: { "X-Api-Key": "e83S07p6GaMOgL3Tbp4W7g==SzjBmXqoFLEGxuow" },
+    contentType: "application/json",
+    success: function (result) { //selection success and error
+      console.log("Retrieved Quote:", result); //Check: Quote Retrieval
+      const quoteObject = {
+        author: result[0].author,
+        quote: result[0].quote,
+        category: category,
+      };
+      quoteHistory.push(quoteObject); //Quote added to long term storage (History)
+      console.log("History of Quotes:", quoteHistory); //Check to see if in long term
+      quoteCurrent.length = 0; //Empty quoteCurrent
+      quoteCurrent.push(quoteObject); //Quote added to short term storage (Current Quote)
+      // Display the quote on the page
+      console.log("Current Quote:", quoteCurrent); //Check to see if current quote works
+      for (let i = 0; i < quoteCurrent.length; i++) { //iteration for loop
+        const quote = quoteCurrent[i];
+        createQuoteCard(quote);
+      }
+    },
+    error: function ajaxError(jqXHR) { //selection
+      console.error("Error: ", jqXHR.responseText);
+    },
+  });
+}
+```
 
 ### Aspects of Algorithm
 
@@ -56,6 +90,7 @@ Programs accept input to achieve their intended functionality. **Describe at lea
 - Write your responses to this question only on the designated pages in the separate Written Response booklet.
 - If there are multiple parts to this question, write the part letter with your response.
 
+Answer for Angelina: Angelina takes 
 ---
 
 ### Question 2

@@ -17,7 +17,7 @@ function retrieveFeelingQuote(category) {
     url: "https://api.api-ninjas.com/v1/quotes?category=" + category,
     headers: { "X-Api-Key": "e83S07p6GaMOgL3Tbp4W7g==SzjBmXqoFLEGxuow" },
     contentType: "application/json",
-    success: function (result) {
+    success: function (result) { 
       console.log("Retrieved Quote:", result); //Check: Quote Retrieval
       const quoteObject = {
         author: result[0].author,
