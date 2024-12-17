@@ -47,5 +47,13 @@ const DOMSelectors = {
   easySubBtn: document.getElementById("easySub-btn"),
   mediumSubBtn: document.getElementById("mediumSub-btn"),
   hardSubBtn: document.getElementById("hardSub-btn"),
-  
+
 };
+
+DOMSelectors.easyModeBtn.addEventListener("click")
+
+function easyModeBtn(easy) {
+  const easy = words.forEach((word) => console.log(word.easy));
+}
+
+easyModeBtn(easy);
