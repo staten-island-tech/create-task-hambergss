@@ -50,10 +50,18 @@ const DOMSelectors = {
 
 };
 
-DOMSelectors.easyModeBtn.addEventListener("click")
+const container = document.getElementById("main-container");
 
-function easyModeBtn(easy) {
-  const easy = words.forEach((word) => console.log(word.easy));
+function easyMode() {
+  return htmlContent = words.easy.map(word => `<div class="word-class">${word}</div>`).join("");
 }
+const easyHtmlContent = easyMode();
+container.innerHTML = easyHtmlContent;
 
-easyModeBtn(easy);
+DOMSelectors.easyModeBtn.addEventListener('click', easyMode);
+
+function mediumMode() {
+  return htmlContent = words.medium.map(word => `<div class="word-class">${word}</div>`).join("");
+}
+const mediumHtmlContent = mediumMode();
+container.innerHTML = mediumHtmlContent;
