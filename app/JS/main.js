@@ -47,7 +47,6 @@ const DOMSelectors = {
   easySubBtn: document.getElementById("easySub-btn"),
   mediumSubBtn: document.getElementById("mediumSub-btn"),
   hardSubBtn: document.getElementById("hardSub-btn"),
-
 };
 
 const container = document.getElementById("main-container");
@@ -65,3 +64,14 @@ function mediumMode() {
 }
 const mediumHtmlContent = mediumMode();
 container.innerHTML = mediumHtmlContent;
+
+function hardMode() {
+  return htmlContent = words.hard.map(word => `<div class="word-class">${word}</div>`).join("");
+}
+const hardHTMLContent = hardMode();
+container.innerHTML = hardHTMLContent;
+
+
+function eastBtn() {
+  
+}
