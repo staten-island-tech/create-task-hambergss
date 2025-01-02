@@ -44,34 +44,38 @@ const DOMSelectors = {
   easyModeBtn: document.getElementById("easyMode-btn"),
   mediumModeBtn: document.getElementById("mediumMode-btn"),
   hardModeBtn: document.getElementById("hardMode-btn"),
-  easySubBtn: document.getElementById("easySub-btn"),
-  mediumSubBtn: document.getElementById("mediumSub-btn"),
-  hardSubBtn: document.getElementById("hardSub-btn"),
+  submitBtn: document.getElementById("sub-btn")
 };
 
 const container = document.getElementById("main-container");
 
 function easyMode() {
-  return htmlContent = words.easy.map(word => `<div class="word-class">${word}</div>`).join("");
+  return (htmlContent = words.easy
+    .map((word) => `<div class="word-class">${word}</div>`)
+    .join(""));
 }
-const easyHtmlContent = easyMode();
-container.innerHTML = easyHtmlContent;
 
-DOMSelectors.easyModeBtn.addEventListener('click', easyMode);
+DOMSelectors.easyModeBtn.addEventListener("click", easyMode);
 
 function mediumMode() {
-  return htmlContent = words.medium.map(word => `<div class="word-class">${word}</div>`).join("");
+  return (htmlContent = words.medium
+    .map((word) => `<div class="word-class">${word}</div>`)
+    .join(""));
 }
 const mediumHtmlContent = mediumMode();
 container.innerHTML = mediumHtmlContent;
 
 function hardMode() {
-  return htmlContent = words.hard.map(word => `<div class="word-class">${word}</div>`).join("");
+  return (htmlContent = words.hard
+    .map((word) => `<div class="word-class">${word}</div>`)
+    .join(""));
 }
 const hardHTMLContent = hardMode();
 container.innerHTML = hardHTMLContent;
 
+function submitBtn(event) {
+  if (easyModeBtn.id === 'yes') {
+    
+  }
 
-function eastBtn() {
-  
 }
