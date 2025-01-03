@@ -1,81 +1,60 @@
 import "../css/style.css";
 
-const words = {
-  easy: [
-    "apple",
-    "ball",
-    "cat",
-    "dog",
-    "house",
-    "tree",
-    "book",
-    "car",
-    "sun",
-    "happy",
-  ],
-  medium: [
-    "library",
-    "journey",
-    "mystery",
-    "puzzle",
-    "tiger",
-    "guitar",
-    "storm",
-    "planet",
-    "river",
-    "chicken",
-  ],
-  hard: [
-    "metamorphosis",
-    "subterranean",
-    "conglomerate",
-    "ephemeral",
-    "quixotic",
-    "paradox",
-    "cacophony",
-    "serendipity",
-    "susceptible",
-    "magnanimous",
-  ],
-};
+import { words } from "./words";
 
 const DOMSelectors = {
-  container: document.getElementById("main-container"),
-  easyModeBtn: document.getElementById("easyMode-btn"),
-  mediumModeBtn: document.getElementById("mediumMode-btn"),
-  hardModeBtn: document.getElementById("hardMode-btn"),
-  submitBtn: document.getElementById("sub-btn")
+  container: document.querySelector("main-container"),
+  easySorter: document.querySelector("#easySorter"),
+  mediumSorter: document.querySelector("mediumSorter"),
+  hardSorter: document.querySelector("hardSorter"),
+  submitBtn: document.querySelector("#subBtn"),
+  wordList: document.querySelector("#word-list"),
 };
 
-const container = document.getElementById("main-container");
+const wordsListContainer = document.getElementById("word-list");
+
+function createWordLine(words) {
+  wordsListContainer.innerHTML = "";
+  words.forEach((word) => {
+    const wordHTML = `
+        <div class="word-item">
+          <h2>${word.name}</h2>
+        </div>
+      `;
+    wordsListContainer.insertAdjacentHTML("beforeend", wordHTML);
+  });
+}
+createWordLine(wordList);
 
 function easyMode() {
-  return (htmlContent = words.easy
-    .map((word) => `<div class="word-class">${word}</div>`)
-    .join(""));
+  DOMSelectors.easySorter.addEventListener("click", () => {
+    const easyWords = words.filter((word) => word.easy === "Easy");
+    createWordLine(easyWords); //to make the easyWords declared inside the eventlistener
+  });
 }
 
 DOMSelectors.easyModeBtn.addEventListener("click", easyMode);
 
 function mediumMode() {
-  return (htmlContent = words.medium
-    .map((word) => `<div class="word-class">${word}</div>`)
-    .join(""));
+  DOMSelectors.mediumSorter.addEventListener("click", () => {
+    const mediumWords = words.filter((word) => word.medium === "Medium");
+    createWordLine(mediumWords);
+  });
 }
-const mediumHtmlContent = mediumMode();
-container.innerHTML = mediumHtmlContent;
+
+DOMSelectors.mediumModeBtn.addEventListener("click", mediumMode);
 
 function hardMode() {
-  return (htmlContent = words.hard
-    .map((word) => `<div class="word-class">${word}</div>`)
-    .join(""));
+  DOMSelectors.hardSorter.addEventListener("click", () => {
+    const hardWords = words.filter((word) => word.easy === "Hard");
+    createWordLine(hardWords);
+  });
 }
-const hardHTMLContent = hardMode();
-container.innerHTML = hardHTMLContent;
+
+DOMSelectors.hardModeBtn.addEventListener("click", hardMode);
 
 function submitBtn(event) {
-  if (easyModeBtn.id === 'yes') {
+  if (easyModeBtn.id === "yes") {
     
   }
-
 }

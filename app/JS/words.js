@@ -1,0 +1,40 @@
+const words = {
+    easy: [
+      "apple",
+      "ball",
+      "cat",
+      "dog",
+      "house",
+      "tree",
+      "book",
+      "car",
+      "sun",
+      "happy",
+    ],
+    medium: [
+      "library",
+      "journey",
+      "mystery",
+      "puzzle",
+      "tiger",
+      "guitar",
+      "storm",
+      "planet",
+      "river",
+      "chicken",
+    ],
+    hard: [
+      "metamorphosis",
+      "subterranean",
+      "conglomerate",
+      "ephemeral",
+      "quixotic",
+      "paradox",
+      "cacophony",
+      "serendipity",
+      "susceptible",
+      "magnanimous",
+    ],
+  };
+
+export { words };
