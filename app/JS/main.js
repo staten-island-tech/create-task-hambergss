@@ -3,28 +3,28 @@ import "../css/style.css";
 import { words } from "./words";
 
 const DOMSelectors = {
-  container: document.querySelector("main-container"),
+  container: document.querySelector("lines-container"),
   easySorter: document.querySelector("#easySorter"),
   mediumSorter: document.querySelector("mediumSorter"),
   hardSorter: document.querySelector("hardSorter"),
+  createLines: document.querySelector("create-lines-btn"),
   submitBtn: document.querySelector("#subBtn"),
   wordList: document.querySelector("#word-list"),
 };
 
-const wordsListContainer = document.getElementById("word-list");
-
 function createWordLine(words) {
+  const wordsListContainer = document.getElementById("#lines-container");
   wordsListContainer.innerHTML = "";
   words.forEach((word) => {
-    const wordHTML = `
-        <div class="word-item">
-          <h2>${word.name}</h2>
-        </div>
-      `;
-    wordsListContainer.insertAdjacentHTML("beforeend", wordHTML);
+    word.split('').forEach(letter => { //splits the word into a array of letters
+      const newLineHTML = `<div>Letter: ${letter}</div>`;
+      wordsListContainer.insertAdjacentHTML("beforeend", newLineHTML);
+    })
   });
 }
-createWordLine(wordList);
+document.querySelector("#create-lines-btn").addEventListener("click", function() {
+  createWordLine(words);
+})
 
 function easyMode() {
   DOMSelectors.easySorter.addEventListener("click", () => {
@@ -54,7 +54,7 @@ function hardMode() {
 DOMSelectors.hardModeBtn.addEventListener("click", hardMode);
 
 function submitBtn(event) {
-  if (easyModeBtn.id === "yes") {
+  if () {
     
   }
 }
