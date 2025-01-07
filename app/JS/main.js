@@ -53,8 +53,29 @@ function hardMode() {
 
 DOMSelectors.hardModeBtn.addEventListener("click", hardMode);
 
-function submitBtn(event) {
-  if () {
-    
+function getRandomWord(wordList) {
+  return wordList[Math/floor(Math.random() * wordList.length)];
+}
+
+let selectedWord = "";
+
+function startGame() {
+  const difficulty = document.getElementById('difficulty').value;
+
+  if (difficulty === "easy") {
+    selectedWord = getRandomWord(easyMode);
+  } else if (difficulty === "medium") {
+    selectedWord = getRandomWord(mediumMode);
+  } else if (difficulty === "hard") {
+    selectedWord = getRandomWord(hardMode);
   }
+
+  let underscores = "";
+  for (let i = 0; i < selectedWord.length; i++) {
+    underscores += "_";
+  }
+}
+
+function submitBtn() {
+
 }
