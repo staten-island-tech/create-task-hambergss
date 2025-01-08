@@ -16,7 +16,7 @@ function createWordLine(words) {
   const wordsListContainer = document.getElementById("#lines-container");
   wordsListContainer.innerHTML = "";
   words.forEach((word) => {
-    word.split('').forEach(letter => { //splits the word into a array of letters
+    word.split('').forEach(letter => { 
       const newLineHTML = `<div>Letter: ${letter}</div>`;
       wordsListContainer.insertAdjacentHTML("beforeend", newLineHTML);
     })
@@ -29,7 +29,7 @@ document.querySelector("#create-lines-btn").addEventListener("click", function()
 function easyMode() {
   DOMSelectors.easySorter.addEventListener("click", () => {
     const easyWords = words.filter((word) => word.easy === "Easy");
-    createWordLine(easyWords); //to make the easyWords declared inside the eventlistener
+    createWordLine(easyWords); 
   });
 }
 
@@ -74,8 +74,22 @@ function startGame() {
   for (let i = 0; i < selectedWord.length; i++) {
     underscores += "_";
   }
+
+  document.getElementById("word-display").innerHTML = underscores.trim();
+
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("guess").value = "";
 }
 
 function submitBtn() {
+  let userGuess = document.getElementById("guess").value.trim();
 
+  if (userGuess === selectedWord) {
+    document.getElementById("feedback").textContent = "WOW You have great memory!";
+  } else {
+    document.getElementById("feedback").textContent = "You have seen too much brainrot";
+  }
+
+  document.getElementById("guess").value = "";
 }
+
