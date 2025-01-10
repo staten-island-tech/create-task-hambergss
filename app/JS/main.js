@@ -17,7 +17,7 @@ const DOMSelectors = {
 
 function createWordLine(wordsArray) {
   const wordsListContainer = document.getElementById("lines-container");
-  wordsListContainer.innerHTML = ""; // Clear existing content
+  wordsListContainer.innerHTML = "";
   wordsArray.forEach((word) => {
     word.split("").forEach((letter) => {
       const newLineHTML = `<div>Letter: ${letter}</div>`;

@@ -1,0 +1,60 @@
+:root {
+  --black: #282928;
+  --white: #f3f2f0;
+  --light-gray: #dae0e0;
+  --gray: #222327;
+
+  /* Typography */
+  --h1: 7.594rem;
+  --h2: 3rem;
+  --h3: 2.5rem;
+  --h4: 2rem;
+  --p: 1rem;
+}
+
+.light {
+  --primary: var(--white);
+  --secondary: var(--gray);
+  --text-color: var(--gray);
+  --accent-color: var(--light-gray);
+}
+
+.dark {
+  --primary: var(--black);
+  --secondary: var(--light-gray);
+  --text-color: var(--light-gray);
+  --accent-color: var(--gray);
+}
+
+body {
+  background-color: var(--primary);
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+p {
+  font-size: var(--p);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  text-align: center;
+  color: var(--secondary);
+}
