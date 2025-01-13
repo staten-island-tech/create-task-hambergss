@@ -1,10 +1,9 @@
 :root {
-  --black: #282928;
-  --white: #f3f2f0;
-  --light-gray: #dae0e0;
-  --gray: #222327;
+  --black: #19232a;
+  --beige: #e3d5be;
+  --orange: #f06859;
+  --green: #7d8b79;
 
-  /* Typography */
   --h1: 7.594rem;
   --h2: 3rem;
   --h3: 2.5rem;
@@ -12,22 +11,28 @@
   --p: 1rem;
 }
 
-.light {
-  --primary: var(--white);
-  --secondary: var(--gray);
-  --text-color: var(--gray);
-  --accent-color: var(--light-gray);
-}
-
-.dark {
+.main {
   --primary: var(--black);
-  --secondary: var(--light-gray);
-  --text-color: var(--light-gray);
-  --accent-color: var(--gray);
+  --text-color: var(--beige);
+  --secondary: var(--orange);
+  --accent-color: var(--green);
 }
 
 body {
   background-color: var(--primary);
+}
+
+#feedback {
+  color: var(--text-color);
+}
+
+button {
+  background-color: var(--secondary);
+  color: var(--black);
+}
+
+#guess:focus {
+  border-color: var(--secondary);
 }
 
 h1 {
@@ -36,6 +41,7 @@ h1 {
 
 h2 {
   font-size: var(--h2);
+  color: var(--text-color);
 }
 
 h3 {
@@ -48,13 +54,4 @@ h4 {
 
 p {
   font-size: var(--p);
-}
-
-h1,
-h2,
-h3,
-h4,
-p {
-  text-align: center;
-  color: var(--secondary);
 }

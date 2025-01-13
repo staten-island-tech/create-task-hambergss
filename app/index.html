@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <body>
+  <body class="main">
+    <h2>Word Memory Game</h2>
     <div id="app"></div>
+    <div>
+      <button id="easyModeBtn">Easy Mode</button>
+      <button id="mediumModeBtn">Medium Mode</button>
+      <button id="hardModeBtn">Hard Mode</button>
+    </div>
     <div id="lines-container"></div>
-    <button id="create-lines-btn">Create Lines</button>
-    <button id="easyModeBtn" class="difficulty-btn">Easy Mode</button>
-    <button id="mediumModeBtn" class="difficulty-btn">Medium Mode</button>
-    <button id="hardModeBtn" class="difficulty-btn">Hard Mode</button>
     <div id="word-display"></div>
-    <input type="text" id="guess" placeholder="Enter your guess">
+
+    <input type="text" id="guess" placeholder="Your Guess" />
     <button id="subBtn">Submit Guess</button>
+
     <div id="feedback"></div>
     <script type="module" src="JS/main.js"></script>
   </body>

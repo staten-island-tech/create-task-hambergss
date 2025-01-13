@@ -4,48 +4,28 @@ import { words } from "./words";
 
 const DOMSelectors = {
   container: document.querySelector("#lines-container"),
-  easySorter: document.querySelector("#easySorter"),
-  mediumSorter: document.querySelector("#mediumSorter"),
-  hardSorter: document.querySelector("#hardSorter"),
-  createLines: document.querySelector("#create-lines-btn"),
-  submitBtn: document.querySelector("#subBtn"),
-  wordList: document.querySelector("#word-list"),
   easyModeBtn: document.querySelector("#easyModeBtn"),
   mediumModeBtn: document.querySelector("#mediumModeBtn"),
   hardModeBtn: document.querySelector("#hardModeBtn"),
+  submitBtn: document.querySelector("#subBtn"),
+  wordList: document.querySelector("#word-list"),
+  startGameBtn: document.querySelector("#start-game-btn"),
+  feedback: document.querySelector("#feedback"),
+  guessInput: document.querySelector("#guess"),
+  wordDisplay: document.querySelector("#word-display"),
 };
 
-function createWordLine(wordsArray) {
-  const wordsListContainer = document.getElementById("lines-container");
-  wordsListContainer.innerHTML = "";
-  wordsArray.forEach((word) => {
-    word.split("").forEach((letter) => {
-      const newLineHTML = `<div>Letter: ${letter}</div>`;
-      wordsListContainer.insertAdjacentHTML("beforeend", newLineHTML);
-    });
-  });
-}
-
-DOMSelectors.easyModeBtn.addEventListener("click", function () {
-  createWordLine(words.easy);
-});
-
-DOMSelectors.mediumModeBtn.addEventListener("click", function () {
-  createWordLine(words.medium);
-});
-
-DOMSelectors.hardModeBtn.addEventListener("click", function () {
-  createWordLine(words.hard);
-});
+let gameRunning = false;
+let selectedWord = "";
 
 function getRandomWord(wordList) {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
-let selectedWord = "";
-
-function startGame() {
-  const difficulty = document.getElementById("difficulty").value;
+function startGame(difficulty) {
+  if (!gameRunning) {
+    gameRunning = true;
+  }
 
   if (difficulty === "easy") {
     selectedWord = getRandomWord(words.easy);
@@ -55,28 +35,62 @@ function startGame() {
     selectedWord = getRandomWord(words.hard);
   }
 
-  let underscores = "";
-  for (let i = 0; i < selectedWord.length; i++) {
-    underscores += "_";
-  }
+  DOMSelectors.wordDisplay.textContent = selectedWord;
 
-  document.getElementById("word-display").innerHTML = underscores.trim();
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("guess").value = "";
+  setTimeout(() => {
+    let underscores = "";
+    for (let i = 0; i < selectedWord.length; i++) {
+      underscores += "_ ";
+    }
+    DOMSelectors.wordDisplay.textContent = underscores.trim();
+  }, 1000);
+
+  DOMSelectors.feedback.textContent = "";
+  DOMSelectors.guessInput.value = "";
 }
 
-function submitBtn() {
-  let userGuess = document.getElementById("guess").value.trim();
+function submitGuess() {
+  if (!gameRunning) return;
+
+  let userGuess = DOMSelectors.guessInput.value.trim();
 
   if (userGuess === selectedWord) {
-    document.getElementById("feedback").textContent =
-      "WOW You have great memory!";
+    DOMSelectors.feedback.textContent = "WOW You have great memory!";
+
+    setTimeout(() => {
+      DOMSelectors.wordDisplay.textContent = "";
+    }, 1000);
   } else {
-    document.getElementById("feedback").textContent =
-      "You have seen too much brainrot";
+    DOMSelectors.feedback.textContent = "You have seen too much brainrot";
+
+    showWordAgain();
   }
 
-  document.getElementById("guess").value = "";
+  DOMSelectors.guessInput.value = "";
 }
 
-DOMSelectors.submitBtn.addEventListener("click", submitBtn);
+function showWordAgain() {
+  DOMSelectors.wordDisplay.textContent = selectedWord;
+
+  setTimeout(() => {
+    let underscores = "";
+    for (let i = 0; i < selectedWord.length; i++) {
+      underscores += "_ ";
+    }
+    DOMSelectors.wordDisplay.textContent = underscores.trim();
+  }, 1000);
+}
+
+DOMSelectors.easyModeBtn.addEventListener("click", () => {
+  startGame("easy");
+});
+
+DOMSelectors.mediumModeBtn.addEventListener("click", () => {
+  startGame("medium");
+});
+
+DOMSelectors.hardModeBtn.addEventListener("click", () => {
+  startGame("hard");
+});
+
+DOMSelectors.submitBtn.addEventListener("click", submitGuess);
