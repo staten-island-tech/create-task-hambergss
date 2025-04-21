@@ -55,21 +55,33 @@ function submitGuess() {
   let userGuess = DOMSelectors.guessInput.value.trim();
 
   if (userGuess === selectedWord) {
-    DOMSelectors.feedback.textContent = "WOW You have great memory!";
+    DOMSelectors.feedback.textContent = "WOW! You have great memory!";
 
     setTimeout(() => {
       DOMSelectors.wordDisplay.textContent = "";
     }, 1000);
   } else {
-    DOMSelectors.feedback.textContent = "You have seen too much brainrot";
-
-    showWordAgain();
+    showWordAgain(userGuess);
   }
 
   DOMSelectors.guessInput.value = "";
 }
 
-function showWordAgain() {
+function showWordAgain(userGuess) {
+  let correctCount = 0;
+
+  if (userGuess.length === selectedWord.length) {
+    for (let i = 0; i < selectedWord.length; i++) {
+      if (userGuess[i] === selectedWord[i]) {
+        correctCount++;
+      }
+    }
+
+    DOMSelectors.feedback.textContent = `You got ${correctCount} letters in the correct position. Try again!`;
+  } else {
+    DOMSelectors.feedback.textContent = `Incorrect length. Try a ${selectedWord.length}-letter word!`;
+  }
+
   DOMSelectors.wordDisplay.textContent = selectedWord;
 
   setTimeout(() => {
